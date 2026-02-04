@@ -52,6 +52,11 @@
   </style>
 </head>
 <body>
+  <!-- Bollywood Background Music -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="bollywood.mp3" type="audio/mpeg">
+</audio>
+  
   <div class="card">
     <div class="hearts" id="hearts"></div>
 
@@ -110,10 +115,16 @@
     noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); }, { passive: false });
 
     yesBtn.addEventListener("click", () => {
-      question.style.display = "none";
-      result.style.display = "block";
-      burstHearts();
-    });
+
+  // Play Bollywood music
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.5;
+  music.play().catch(()=>{});
+
+  question.style.display = "none";
+  result.style.display = "block";
+  burstHearts();
+});
 
     function burstHearts() {
       const emojis = ["💖","💘","💝","💕","💗","💓","💞"];
@@ -132,3 +143,4 @@
   </script>
 </body>
 </html>
+
